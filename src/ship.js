@@ -1,26 +1,16 @@
 export class Ship {
-  #hits;
-  #sunk;
+  #hits = 0;
 
   constructor(length) {
     this.length = length;
-    this.#hits = Array(length).fill(false);
-    this.#sunk = false;
   }
 
-  hit(index) {
-    if (index > this.length || index < 0) {
-      throw new Error('Target out of ship bounds')
-    }
-
-    if (this.#hits[index]) return 'Already hit';
-
-    this.#hits[index] = true;
+  hit() {
+    this.#hits++;
   }
 
   isSunk() {
-    if (this.#sunk) return true;
-
-    if (this.#hits.every(Boolean)) return true;
+    if (this.#hits === this.length) return true;
+    return false;
   }
 }
