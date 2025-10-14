@@ -1,16 +1,19 @@
 import { Ship } from "./ship";
 
 export class Gameboard {
-  #size = 100;
-  #board = Array(this.#size).fill(null);
+  #size = 10;
+  #board = Array(this.#size).fill(Array(this.#size));
 
-  // Implement orientation
-  placeShip(x, y, length, orientation) {
+  placeShip(x, y, length, isVertical = False) {
     const ship = new Ship(length);
-    this.#board.splice(0, length, ship);
+
+    for (let i = 0; i < length; i++) {
+      if (isVertical) this.#board[y + i][x] = ship;
+      else this.#board[y][x + i] = ship;
+    }
   }
 
   receiveAttack(x, y) {
-    
+
   }
 }
