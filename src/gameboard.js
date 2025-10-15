@@ -8,6 +8,7 @@ export class Gameboard {
     return this.#board[x][y];
   }
 
+  // TODO: Account for out of bounds (ie, what happens if x + 1 extends passed the board)
   placeShip(x, y, length, isVertical = false) {
     const ship = new Ship(length);
 
@@ -21,6 +22,29 @@ export class Gameboard {
   }
 
   receiveAttack(x, y) {
-    
+    // No ship, no hits
+    if (this.#board[y][x] === null) {
+      this.#board[y][x] = false;
+      return false;
+    }
+
+    if (this.#board[y][x] === false) {
+      return 'Empty cell already targeted';
+    }
+
+    if (this.#board[y][x]) {
+      if (this.#board[y][x].isHit());
+      return 'Cell with ship already targeted';
+    }
+
+    // Hit ship, return true
+    if (this.#board[y][x]) {
+      this.#board[y][x].hit(x, y);
+      return true;
+    }
+  }
+
+  printBoard() {
+    console.log(this.#board);
   }
 }

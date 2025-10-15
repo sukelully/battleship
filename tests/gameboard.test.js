@@ -4,6 +4,7 @@ import { Ship } from "../src/ship";
 test('Place ship horizontally', () => {
   const gb = new Gameboard();
   gb.placeShip(0, 0, 2);
+
   expect(gb.getCell(0, 0)).toBeTruthy();
   expect(gb.getCell(0, 1)).toBeTruthy();
   expect(gb.getCell(0, 2)).toBeFalsy();
@@ -12,7 +13,23 @@ test('Place ship horizontally', () => {
 test('Place ship vertically', () => {
   const gb = new Gameboard();
   gb.placeShip(0, 0, 2, true);
+
   expect(gb.getCell(0, 0)).toBeTruthy();
   expect(gb.getCell(1, 0)).toBeTruthy();
   expect(gb.getCell(2, 0)).toBeFalsy();
+});
+
+test('Receive attack', () => {
+  const gb = new Gameboard();
+  gb.placeShip(5, 5, 2);
+
+  expect(gb.receiveAttack(5, 5)).toBeTruthy();
+  expect(gb.receiveAttack(5, 5)).toBe('Cell with ship already targeted');
+});
+
+test('Missed shots are tracked', () => {
+  const gb = new Gameboard();
+
+  expect(gb.receiveAttack(6, 9)).toBeFalsy();
+  expect(gb.receiveAttack(6, 9)).toBe('Empty cell already targeted');
 });
