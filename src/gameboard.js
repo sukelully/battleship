@@ -27,7 +27,6 @@ export class Gameboard {
     }
   }
 
-  // * Can use typeof === boolean (or string) to gauge whether a hit was recorded
   receiveAttack(x, y) {
     const cell = this.#board[y][x];
 

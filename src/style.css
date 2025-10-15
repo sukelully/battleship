@@ -1,0 +1,18 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+
+#main-container {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  height: 100%;
+  column-gap: 2px;
+  padding: 0 4rem;
+}
+
+#ships, #board-grid {
+  background-color: black;
+}
