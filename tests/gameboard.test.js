@@ -1,5 +1,4 @@
 import { Gameboard } from "../src/gameboard";
-import { Ship } from "../src/ship";
 
 test('Place ship horizontally', () => {
   const gb = new Gameboard();
@@ -17,6 +16,13 @@ test('Place ship vertically', () => {
   expect(gb.getCell(0, 0)).toBeTruthy();
   expect(gb.getCell(1, 0)).toBeTruthy();
   expect(gb.getCell(2, 0)).toBeFalsy();
+});
+
+test('Place ship out of bounds', () => {
+  const gb = new Gameboard();
+
+  expect(gb.placeShip(9, 9, 5)).toBe('Error: Ship out of bounds');
+  expect(gb.placeShip(9, 9, 1)).toBeUndefined();  // Ship placed successfully
 });
 
 test('Receive attack', () => {
