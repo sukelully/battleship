@@ -56,7 +56,7 @@ export class Gameboard {
         return this.#ships.every((ship) => ship.isSunk());
     }
 
-    printBoard() {
-        console.log(this.#board);
+    getBoard() {
+        return this.#board;
     }
 }
