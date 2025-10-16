@@ -22,8 +22,8 @@ body {
   height: 90vh;
 }
 
-#player-board,
-#computer-board,
+#player-container,
+#computer-container,
 #ships {
   background-color: black;
   color: white;
@@ -45,8 +45,8 @@ body {
     grid-template-rows: 3fr 3fr 1fr;
   }
 
-  #player-board,
-  #computer-board {
+  #player-container,
+  #computer-container {
     grid-column: 1 / span 2;
   }
 }

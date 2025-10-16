@@ -1,0 +1,26 @@
+.board {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  gap: 2px;
+  aspect-ratio: 1 / 1;
+  width: 90%;
+  max-width: 500px;
+}
+
+.board > div {
+  aspect-ratio: 1 / 1;
+  background-color: gray;
+}
+
+.board > div.cell-hit {
+  background-color: red;
+}
+
+.board > div.cell-miss {
+  background-color: black;
+}
+
+.board > div.cell-ship {
+  background-color: white;
+}
