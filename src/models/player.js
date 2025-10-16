@@ -1,8 +1,7 @@
 import { Gameboard } from './gameboard'
 
 export class Player {
-    constructor(name, computer = false) {
-        this.name = name
+    constructor(computer = false) {
         this.computer = computer
     }
 
