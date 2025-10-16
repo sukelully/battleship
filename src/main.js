@@ -1,4 +1,7 @@
-import "./style.css";
-import { Gameboard } from "./gameboard";
-import { Ship } from "./ship";
-import { Player } from "./player";
+// import "./style.css";
+// import { Gameboard } from "./models/gameboard";
+// import { Ship } from "./models/ship";
+// import { Player } from "./models/player";
+
+// const player1 = new Player();
+// const player2 = new Player();
