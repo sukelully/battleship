@@ -1,9 +1,9 @@
-import { Gameboard } from './gameboard'
+import { Gameboard } from './gameboard';
 
 export class Player {
     constructor(computer = false) {
-        this.computer = computer
+        this.computer = computer;
     }
 
-    board = new Gameboard()
+    board = new Gameboard();
 }

@@ -1,14 +1,14 @@
-import { Ship } from './ship'
+import { Ship } from './ship';
 
 export class Gameboard {
-    #size = 10
+    #size = 10;
     #board = Array.from({ length: this.#size }, () =>
         Array(this.#size).fill(null)
-    )
-    #ships = []
+    );
+    #ships = [];
 
     getCell(x, y) {
-        return this.#board[y][x]
+        return this.#board[y][x];
     }
 
     placeShip(x, y, length, isVertical = false) {
@@ -16,47 +16,47 @@ export class Gameboard {
             (isVertical && y + length > this.#size) ||
             (!isVertical && x + length > this.#size)
         )
-            return 'Error: Ship out of bounds'
+            return 'Error: Ship out of bounds';
 
-        const ship = new Ship(length)
-        this.#ships.push(ship)
+        const ship = new Ship(length);
+        this.#ships.push(ship);
 
         for (let i = 0; i < length; i++) {
             if (isVertical) {
-                this.#board[y + i][x] = ship
+                this.#board[y + i][x] = ship;
             } else {
-                this.#board[y][x + i] = ship
+                this.#board[y][x + i] = ship;
             }
         }
     }
 
     receiveAttack(x, y) {
-        const cell = this.#board[y][x]
+        const cell = this.#board[y][x];
 
         // Already targeted
         if (cell === true || cell === false) {
-            return 'Cell already targeted'
+            return 'Cell already targeted';
         }
 
         // Miss
         if (cell === null) {
-            this.#board[y][x] = false
-            return false
+            this.#board[y][x] = false;
+            return false;
         }
 
         // Hit
         if (cell instanceof Ship) {
-            cell.hit()
-            this.#board[y][x] = true
-            return true
+            cell.hit();
+            this.#board[y][x] = true;
+            return true;
         }
     }
 
     isFleetSunk() {
-        return this.#ships.every((ship) => ship.isSunk())
+        return this.#ships.every((ship) => ship.isSunk());
     }
 
     printBoard() {
-        console.log(this.#board)
+        console.log(this.#board);
     }
 }
